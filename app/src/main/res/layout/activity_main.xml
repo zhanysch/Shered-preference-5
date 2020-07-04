@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/EDtName"
+        android:id="@+id/EdtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="26dp"
@@ -30,7 +30,7 @@
         android:maxLength="30"
         android:maxLines="1"
         android:imeOptions="actionDone"
-        app:layout_constraintTop_toBottomOf="@id/EDtName"/>.
+        app:layout_constraintTop_toBottomOf="@id/EdtName"/>.
 
     <Button
         android:id="@+id/Btnregistr"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@id/EDpass"/>
 
     <Button
-        android:id="@+id/log"
+        android:id="@+id/Btnlog"
         android:text="@string/Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

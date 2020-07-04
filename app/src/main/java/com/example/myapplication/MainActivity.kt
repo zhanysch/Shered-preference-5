@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,24 +10,57 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    val trueinputname ="maks"
-    val truepass= "12345"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        val Btnregistr=findViewById<Button>(R.id.Btnregistr)
 
 
+
+
+        val Btnregistr = findViewById<Button>(R.id.Btnregistr)
+        val Btnlog= findViewById<Button>(R.id.Btnlog)
+        val EdtName = findViewById<EditText>(R.id.EdtName)
+        val EDpas = findViewById<EditText>(R.id.EDpass)
+
+        val preference = getSharedPreferences("Preference", Context.MODE_PRIVATE)
 
 
         Btnregistr.setOnClickListener {
 
-            val intent = Intent(applicationContext,Registration::class.java)
+            val text = EdtName.text.toString()
 
-            startActivity(intent)
+            preference.edit().putString("text",text).apply()
+
+            val text1 = EDpas.text.toString()
+
+            preference.edit().putString("text1",text1)
+
+            Toast.makeText(applicationContext, "data is saved", Toast.LENGTH_LONG ).show()
+
+
+
+
+        }
+
+
+        Btnlog.setOnClickListener {
+
+            val textFromPref =  preference.getString("text","not saved")
+
+            EdtName.setText(textFromPref)
+
+            val textFromProf =  preference.getString("text1","not saved")
+            EDpas.setText(textFromPref )
+
+
+
+
+
+
+
 
 
 
@@ -35,39 +69,15 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val login = findViewById<Button>(R.id.log)
-        val EDtName = findViewById<EditText>(R.id.EDtName)
-        val EDpass = findViewById<EditText>(R.id.EDpass)
-
-        login.setOnClickListener {
-            val text = EDtName.text.toString()
-            val passText = EDpass.text.toString()
-
-
-            if (text== trueinputname && passText == truepass  ) {
-
-                Toast.makeText(applicationContext, "data is correct", Toast.LENGTH_LONG ).show()
-            }
-
-            else {
-                Toast.makeText(applicationContext, "data is not correct", Toast.LENGTH_LONG ).show()
-
-            }
 
 
 
 
-            val intent = Intent(applicationContext,Profile::class.java)
-
-            intent.putExtra("fromlogin",text)
-            intent.putExtra("ettext", true)
 
 
 
 
-            startActivity(intent)
-
-        }
+    }
 
 
 }
