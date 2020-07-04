@@ -56,6 +56,20 @@ class MainActivity : AppCompatActivity() {
             EDpas.setText(textFromPref )
 
 
+            val intent = Intent(this, Profile::class.java )
+
+            val text = EdtName.text.toString()
+            val text2 = EDpas.text.toString()
+
+
+            intent.putExtra("fromlogin",textFromPref)
+            intent.putExtra("from password",text2 )
+
+            startActivity(intent)
+
+
+
+
 
 
 
