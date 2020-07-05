@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
 
             val text = EdtName.text.toString()
 
-            preference.edit().putString("login",text).apply()
+            preference.edit().putString("text",text).apply()
 
             val text1 = EDpas.text.toString()
 
-            preference.edit().putString("password",text1).apply()
+            preference.edit().putString("text1",text1).apply()
 
             Toast.makeText(applicationContext, "data is saved", Toast.LENGTH_LONG ).show()
 
@@ -47,11 +47,12 @@ class MainActivity : AppCompatActivity() {
 
         Btnlog.setOnClickListener {
 
+
             val textFromPref =  preference.getString("text","not saved")
 
             EdtName.setText(textFromPref)
 
-            val textFromProf =  preference.getString("text","not saved")
+            val textFromProf =  preference.getString("text1","not saved")
             EDpas.setText(textFromProf )
 
 

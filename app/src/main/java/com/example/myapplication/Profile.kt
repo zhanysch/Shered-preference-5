@@ -14,16 +14,28 @@ class Profile : AppCompatActivity() {
 
 
         val EdtLogin = findViewById<EditText>(R.id.EdtLogin)
-        val  EDpass = findViewById<EditText>(R.id.EDpass)
+        val  Edpass = findViewById<EditText>(R.id.Edpass)
         val Update = findViewById<Button>(R.id.Update)
         val Out = findViewById<Button>(R.id.Out)
 
 
 
 
+        val text = getSharedPreferences("Preference", Context.MODE_PRIVATE).getString("text","")
+        EdtLogin.setText(text)
+        val text1 = getSharedPreferences("Preference", Context.MODE_PRIVATE).getString("text1","")
+        Edpass.setText(text1)
 
 
-        
+
+
+
+
+
+
+
+
+
 
 
 
