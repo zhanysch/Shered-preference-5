@@ -25,8 +25,17 @@ class Profile : AppCompatActivity() {
         EdtLogin.setText(text)
         val text1 = getSharedPreferences("Preference", Context.MODE_PRIVATE).getString("text1","")
         Edpass.setText(text1)
+        val preference = getSharedPreferences("Preference", Context.MODE_PRIVATE)
 
 
+        Update.setOnClickListener {
+            val textFromPref =  preference.getString("text","not saved")
+
+            EdtLogin.setText(textFromPref)
+
+            val textFromProf =  preference.getString("text1","not saved")
+            Edpass.setText(textFromProf )
+        }
 
 
 
@@ -45,10 +54,17 @@ class Profile : AppCompatActivity() {
 
         Out.setOnClickListener {
 
+            val text = EdtLogin.text.toString()
 
+            preference.edit().putString("text",text).apply()
+
+            val text1 = Edpass.text.toString()
+
+            preference.edit().putString("text1",text1).apply()
             val intent = Intent(this,MainActivity::class.java)
 
             startActivity(intent)
+            finish()
 
 
         }

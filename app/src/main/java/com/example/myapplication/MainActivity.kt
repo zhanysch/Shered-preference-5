@@ -27,6 +27,13 @@ class MainActivity : AppCompatActivity() {
 
         val preference = getSharedPreferences("Preference", Context.MODE_PRIVATE)
 
+        val textFromPref =  preference.getString("text","not saved")
+        EdtName.setText(textFromPref)
+
+        val textFromProf =  preference.getString("text1","not saved")
+        EDpas.setText(textFromProf )
+
+
 
         Btnregistr.setOnClickListener {
 
@@ -63,6 +70,7 @@ class MainActivity : AppCompatActivity() {
 
 
             startActivity(intent)
+            finish()
 
 
         }
