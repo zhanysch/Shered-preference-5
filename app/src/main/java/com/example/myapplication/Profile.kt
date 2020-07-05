@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -11,16 +13,35 @@ class Profile : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
 
 
-        var EdtLogin = findViewById<EditText>(R.id.EdtLogin)
-        var  EDpass = findViewById<EditText>(R.id.EDpass)
+        val EdtLogin = findViewById<EditText>(R.id.EdtLogin)
+        val  EDpass = findViewById<EditText>(R.id.EDpass)
         val Update = findViewById<Button>(R.id.Update)
         val Out = findViewById<Button>(R.id.Out)
 
-        val data = intent.getStringExtra("fromlogin")
-        val data2 = intent.getStringExtra("from password")
 
-        EdtLogin.text=data
-        EDpass.text=data2
+
+
+
+
+        
+
+
+
+
+
+
+
+        Out.setOnClickListener {
+
+
+            val intent = Intent(this,MainActivity::class.java)
+
+            startActivity(intent)
+
+
+        }
+
+
 
 
 
