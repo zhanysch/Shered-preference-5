@@ -14,6 +14,7 @@ class Profile : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
 
 
+
         val EdtLogin = findViewById<EditText>(R.id.EdtLogin)
         val  Edpass = findViewById<EditText>(R.id.Edpass)
         val Update = findViewById<Button>(R.id.Update)
@@ -54,17 +55,15 @@ class Profile : AppCompatActivity() {
 
         Out.setOnClickListener {
 
-            val login =  preference.getString("text","not saved")
+            val text = EdtLogin.text.toString()
+            val text1 = Edpass.text.toString()
 
-            EdtLogin.setText(login)
-
-            val password =  preference.getString("text1","not saved")
-            Edpass.setText(password )
+            preference.edit().putString("text",text).apply()
+            preference.edit().putString("text1",text).apply()
 
             val intent = Intent(this,MainActivity::class.java)
 
-            intent.putExtra("Login", login )
-            intent.putExtra("Password",password)
+
 
             startActivity(intent)
             finish()
@@ -86,5 +85,3 @@ class Profile : AppCompatActivity() {
 
     }
 }
-
-

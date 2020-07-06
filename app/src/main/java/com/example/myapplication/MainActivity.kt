@@ -2,15 +2,17 @@ package com.example.myapplication
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_profile.*
 
 class MainActivity : AppCompatActivity() {
-
-
+     val trueLogin = "maks"
+         val truepassword = "Vasya"
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -58,20 +60,49 @@ class MainActivity : AppCompatActivity() {
 
             val textFromPref =  preference.getString("text","not saved")
 
-            EdtName.setText(textFromPref)
+            EdtName?.setText(textFromPref)
 
             val textFromProf =  preference.getString("text1","not saved")
-            EDpas.setText(textFromProf )
+            EDpas?.setText(textFromProf )
+
+             val login = EdtName.text.toString()
+            val passw= EDpas.text.toString()
+            if (login == trueLogin && passw == truepassword) {
+                Toast.makeText(applicationContext, "data is correct", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, Profile::class.java)
+                startActivity(intent)
+
+            }
+
+                else {
+                Toast.makeText(applicationContext, "data is not correct", Toast.LENGTH_LONG).show()
+            }
+            }
 
 
 
-            val intent = Intent(this, Profile::class.java )
 
 
 
 
-            startActivity(intent)
-            finish()
+
+
+
+
+
+
+
+
+
+
+
+           
+
+
+
+
+
+
 
 
         }
@@ -86,4 +117,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-}
