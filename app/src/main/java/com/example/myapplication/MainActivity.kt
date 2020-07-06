@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
             preference.edit().putString("text1",text1).apply()
 
-            Toast.makeText(applicationContext, "data is saved", Toast.LENGTH_LONG ).show()
+
 
 
 
@@ -74,6 +75,10 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+
+
+
 
 
 

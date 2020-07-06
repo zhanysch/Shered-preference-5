@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class Profile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,12 +30,11 @@ class Profile : AppCompatActivity() {
 
 
         Update.setOnClickListener {
-            val textFromPref =  preference.getString("text","not saved")
+            val text = EdtLogin.text.toString()
+            val text1 = Edpass.text.toString()
 
-            EdtLogin.setText(textFromPref)
-
-            val textFromProf =  preference.getString("text1","not saved")
-            Edpass.setText(textFromProf )
+            preference.edit().putString("text",text).apply()
+            preference.edit().putString("text1",text).apply()
         }
 
 
@@ -54,14 +54,17 @@ class Profile : AppCompatActivity() {
 
         Out.setOnClickListener {
 
-            val text = EdtLogin.text.toString()
+            val login =  preference.getString("text","not saved")
 
-            preference.edit().putString("text",text).apply()
+            EdtLogin.setText(login)
 
-            val text1 = Edpass.text.toString()
+            val password =  preference.getString("text1","not saved")
+            Edpass.setText(password )
 
-            preference.edit().putString("text1",text1).apply()
             val intent = Intent(this,MainActivity::class.java)
+
+            intent.putExtra("Login", login )
+            intent.putExtra("Password",password)
 
             startActivity(intent)
             finish()
